@@ -2,7 +2,6 @@
 
 import argparse
 import random
-import sys
 import oblique_strategies
 
 parser = argparse.ArgumentParser()
