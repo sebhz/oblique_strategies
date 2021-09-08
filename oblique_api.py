@@ -12,14 +12,14 @@ app = flask.Flask(__name__)
 @app.route(API_PATH + "/strategy")
 def get_random_strat():
     strategy, edition = oblique_strategies.get_random_strat()
-    return flask.jsonify({"strategy": strategy, "edition": edition})
+    return {"strategy": strategy, "edition": edition}
 
 
 @app.route(API_PATH + "/strategy/ed/<int:ed>")
 def get_random_strat_from_edition(ed):
     if ed < 1 or ed > len(oblique_strategies.STRATEGIES):
         flask.abort(404)
-    strategy,edition = oblique_strategies.get_random_strat(ed)
+    strategy, edition = oblique_strategies.get_random_strat(ed)
     return {"strategy": strategy, "edition": edition}
 
 
