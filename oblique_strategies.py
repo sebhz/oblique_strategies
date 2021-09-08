@@ -609,12 +609,14 @@ STRATEGIES = [
 ]
 
 
-def get_random_strat(edition):
+def get_random_strat(edition=None):
+    if edition is None:
+        edition = random.randint(1, len(STRATEGIES))
     if not isinstance(edition, int):
         raise TypeError
-    if edition >= len(STRATEGIES) or edition < 0:
+    if edition > len(STRATEGIES) or edition <= 0:
         raise ValueError(str(edition) + " is not in range")
-    return random.choice(STRATEGIES[edition])
+    return random.choice(STRATEGIES[edition - 1]), edition
 
 
 def get_all_strats():

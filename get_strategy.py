@@ -25,21 +25,15 @@ parser.add_argument(
 
 _args = parser.parse_args()
 
-if _args.edition:
-    edition = _args.edition - 1
-else:
-    edition = random.randint(0, len(oblique_strategies.STRATEGIES) - 1)
 
 if _args.all:
-    if not _args.edition:
+    if _args.edition is None:
         all_strats = oblique_strategies.get_all_strats()
         for strat in sorted(all_strats.keys()):
             print(strat, all_strats[strat] if _args.show_edition else "")
     else:
-        for strat in oblique_strategies.STRATEGIES[edition]:
-            print(strat, "[" + str(edition + 1) + "]" if _args.show_edition else "")
+        for strat in oblique_strategies.STRATEGIES[_args.edition - 1]:
+            print(strat, "[" + str(_args.edition) + "]" if _args.show_edition else "")
 else:
-    print(
-        oblique_strategies.get_random_strat(edition),
-        "[" + str(edition + 1) + "]" if _args.show_edition else "",
-    )
+    strat, edition = oblique_strategies.get_random_strat(_args.edition)
+    print(strat, "[" + str(edition) + "]" if _args.show_edition else "")
