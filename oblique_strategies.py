@@ -467,7 +467,7 @@ STRATEGIES = [
         "What context would look right",
         "What is the simplest solution",
         "What mistakes did you make last time",
-        "What to increase? What to reduce? What to maintain",
+        "What to increase? What to reduce? What to maintain?",
         "What were you really thinking about just now",
         "What wouldn't you do",
         "What would your closest friend do",
